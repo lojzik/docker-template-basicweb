@@ -1,0 +1,12 @@
+[Unit]
+Description=web
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/local/bin/docker-compose --file /var/docker/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose --file /var/docker/docker-compose.yml stop ; /usr/local/bin/docker-compose --file /var/docker/docker-compose.yml rm -f
+																																																		
+[Install]
+WantedBy=local.target
